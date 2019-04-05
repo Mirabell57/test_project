@@ -6,7 +6,6 @@ import time
 g = Github("Testask", "Testask84218421")
 u = g.get_user()
 
-
 # Deleting of all existing repositories on github.com
 
 def check_rep():
