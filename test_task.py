@@ -28,6 +28,9 @@ def check_rep():
     time.sleep(30)
 
 
+
+
+
 def repos_sum():
     repos = u.get_repos()
     assert len([i.name for i in repos]) == 1, "Should be 1"
