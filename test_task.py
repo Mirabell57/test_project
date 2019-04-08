@@ -6,6 +6,7 @@ import time
 g = Github("Testask", "Testask84218421")
 u = g.get_user()
 
+
 # Deleting of all existing repositories on github.com
 
 def check_rep():
@@ -16,14 +17,17 @@ def check_rep():
     while repo_count != 0:
         repo_count = len([i for i in u.get_repos()])
 
-# Create a repository on github.com
+    # Create a repository on github.com
     u.create_repo("Elmira")
     time.sleep(30)
 
+
 def repos_sum():
     repos = u.get_repos()
+
     # test 1
     assert len([i.name for i in repos]) == 1, "Should be 1 repository"
+
 
 # Create an issue on github.com
 
@@ -32,12 +36,9 @@ def create_issue():
     issue = repo.create_issue(title="This is a new issue")
     founded_issue = repo.get_issue(number=issue._number.value)
 
-    # Get list of open issues
-    open_issues = repo.get_issues(state='open')
-    for issue in open_issues:
-        print(issue)
     # test 2
     assert issue == founded_issue, "The test with issue creating was not passed"
+
 
 # Create a Milestone on github.com
 
@@ -46,13 +47,9 @@ def create_milestone():
     milestone = repo.create_milestone(title='New Milestone')
     created_milestone = repo.get_milestone(number=1)
 
-    # Get milestone list
-    open_milestones = repo.get_milestones(state='open')
-    for milestone in open_milestones:
-        print(milestone)
-
     # test3
     assert milestone == created_milestone, "The test with milestone creating was not passed"
+
 
 # Create a new file in the repository
 
@@ -66,10 +63,10 @@ def create_new_file():
     l = list()
     for content_file in contents:
         l.append(content_file.name)
-        print(content_file.name)
 
     # test4
     assert l[0] == 'test.txt', "There is an error with list of files"
+
 
 # Get all the labels of the repository
 
@@ -79,7 +76,6 @@ def get_all_labels_repository():
     l = list()
     for label in labels:
         l.append(label.name)
-
 
     # test5
     assert 'bug' in l, "There is no such label"
